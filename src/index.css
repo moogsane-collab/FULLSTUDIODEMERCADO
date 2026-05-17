@@ -1,0 +1,79 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@theme {
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+
+  --color-bg: #111410;
+  --color-bg2: #1a1e17;
+  --color-surface: #1f2419;
+  --color-border: #2e3529;
+  --color-ink: #f0ede6;
+  --color-text-muted: #8a9080;
+  --color-green-primary: #2d6a4f;
+  --color-green-light: #52b788;
+  --color-green-pale: #1a3025;
+  --color-terra: #c8652a;
+  --color-terra-light: #e8956a;
+  --color-amber-primary: #f4a261;
+  --color-score-bg: #0d1a10;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-ink font-sans transition-colors duration-300;
+  }
+}
+
+.report-hero {
+  @apply relative overflow-hidden bg-score-bg rounded-3xl p-8 md:p-12 text-[#f0ede6];
+}
+
+.report-hero::before {
+  content: '';
+  @apply absolute -top-[40%] -right-[10%] w-[400px] h-[400px] rounded-full pointer-events-none;
+  background: radial-gradient(circle, rgba(82,183,136,0.2) 0%, transparent 70%);
+}
+
+.toc-item {
+  @apply block px-6 py-2 text-[13px] text-text-muted transition-all duration-150 border-l-2 border-transparent;
+}
+
+.toc-item:hover {
+  @apply text-ink bg-bg2;
+}
+
+.toc-item.active {
+  @apply text-green-primary border-l-green-primary font-medium;
+}
+
+.card {
+  @apply bg-surface border border-border rounded-2xl p-6 shadow-sm;
+}
+
+.quote-block {
+  @apply border-l-4 border-terra p-6 bg-surface rounded-r-xl my-6 shadow-sm;
+}
+
+.pill {
+  @apply inline-block px-2.5 py-0.5 rounded-full text-[11px] font-medium;
+}
+
+.pill-green { @apply bg-green-pale text-green-primary; }
+.pill-terra { @apply bg-terra/20 text-terra; }
+.pill-amber { @apply bg-amber-primary/15 text-[#b45309]; }
+.pill-gray { @apply bg-bg2 text-text-muted; }
+
+/* Custom utility for vertical text */
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+@media print {
+  .no-print { display: none !important; }
+  .report-hero { background: #1a2e1f !important; color: #f0ede6 !important; }
+  .card, .risk-item, .step-item, .quote-block { page-break-inside: avoid; }
+}
+
