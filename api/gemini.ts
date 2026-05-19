@@ -1,10 +1,6 @@
 import { GoogleGenAI, Type } from "@google/genai";
 
-export const maxDuration = 300;
 
-export const config = {
-  runtime: 'nodejs',
-};
 
 const reportSchema = {
   type: Type.OBJECT,
