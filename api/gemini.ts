@@ -1,7 +1,9 @@
 import { GoogleGenAI, Type } from "@google/genai";
 
+export const maxDuration = 300;
+
 export const config = {
-  runtime: 'edge',
+  runtime: 'nodejs',
 };
 
 const reportSchema = {
